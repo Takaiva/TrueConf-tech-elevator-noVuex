@@ -1,26 +1,54 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="wrapper">
+    <AppOptions
+      :floorsCount="floorsCount"
+      @changeNumOfFloors="(value) => (this.floorsCount = value)"
+    />
+    <Shaft :floors="floorsCount" />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Shaft from "./components/ShaftComponent.vue";
+import AppOptions from "@/components/AppOptions.vue";
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    Shaft,
+    AppOptions,
+  },
+  data() {
+    return {
+      floorsCount: 5, // default
+    };
+  },
+  mounted() {
+    // save floors count on page refresh
+    if (Object.prototype.hasOwnProperty.call(localStorage, "floorsCount")) {
+      this.floorsCount = Number(localStorage.getItem("floorsCount"));
+    }
+  },
+  watch: {
+    floorsCount(newVal) {
+      localStorage.setItem("floorsCount", newVal);
+    },
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+  background: #393e46;
+}
+
+.wrapper {
+  margin: 10px;
 }
 </style>
