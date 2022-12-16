@@ -1,4 +1,8 @@
-# elevator-practice
+# [Elevator Emulator](https://true-conf-tech-elevator-no-vuex-syto.vercel.app/)
+
+####
+- Options Api
+- No Vuex
 
 ## Project setup
 ```
