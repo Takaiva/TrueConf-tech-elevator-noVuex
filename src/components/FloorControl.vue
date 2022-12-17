@@ -5,7 +5,7 @@
       type="checkbox"
       v-model="checked"
       :disabled="count === targetFloor || checked"
-      class="floor__control__custom-radio custom-radio"
+      class="floor__control__custom-checkbox custom-checkbox"
       :class="currentTargetFloor ? 'current-target_active' : null"
       :id="count"
       @click="callElevator"
@@ -85,13 +85,13 @@ label {
   display: flex;
   gap: 5px;
 }
-.custom-radio {
+.custom-checkbox {
   position: absolute;
   z-index: -1;
   opacity: 0;
 }
 
-.custom-radio + label::before {
+.custom-checkbox + label::before {
   content: "";
   display: inline-block;
   width: 1em;
@@ -108,16 +108,16 @@ label {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
 }
 /* when hovered */
-.custom-radio:not(:disabled):not(:checked) + label:hover::before {
+.custom-checkbox:not(:disabled):not(:checked) + label:hover::before {
   border-color: orangered;
   background-color: orange;
 }
 /* when focused */
-.custom-radio:focus + label::before {
+.custom-checkbox:focus + label::before {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 /* when checked */
-.custom-radio:checked + label::before {
+.custom-checkbox:checked + label::before {
   background: linear-gradient(
     100deg,
     #eb6841,
@@ -130,7 +130,7 @@ label {
   /*height: auto;*/
 }
 /* when disabled */
-.custom-radio:disabled + label::before {
+.custom-checkbox:disabled + label::before {
   background-color: #e9ecef;
 }
 /* when elevator is heading to the certain floor*/
