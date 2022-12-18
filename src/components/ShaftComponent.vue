@@ -43,10 +43,7 @@ export default {
   },
   methods: {
     changeFloor(floor, controlsApi) {
-      const diff =
-        floor > this.targetFloor
-          ? floor - this.targetFloor
-          : this.targetFloor - floor;
+      const diff = Math.abs(floor - this.targetFloor);
       const direction = floor > this.targetFloor ? "up" : "down";
       this.targetFloor = floor;
       const options = {
